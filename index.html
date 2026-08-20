@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shubham Shukla — Graphic Design</title>
+<title>Shubham Shukla — Graphic Designer</title>
+<meta name="description" content="Shubham Shukla is a graphic designer creating bold posters, collage, typography, and identity experiments for independent brands and creative projects.">
+<meta name="theme-color" content="#F2EEE2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +31,9 @@
   ::selection{background:var(--crimson); color:var(--paper);}
 
   a{color:inherit;}
+  .skip-link{position:absolute; left:16px; top:-80px; z-index:100; background:var(--crimson); color:var(--paper); padding:10px 14px; text-decoration:none; font-size:12px; font-weight:700;}
+  .skip-link:focus{top:16px;}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
 
   .noise{
     position:fixed; inset:0; pointer-events:none; z-index:999;
@@ -103,6 +108,10 @@
   .hero-meta div{max-width:280px;}
   .hero-meta .k{font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--crimson); margin-bottom:8px; font-weight:700;}
   .hero-meta p{margin:0; font-size:13.5px; line-height:1.7;}
+  .hero-lede{max-width:680px; font-size:clamp(14px,1.5vw,17px); line-height:1.7; margin:26px 0 0;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;}
+  .hero-actions .btn{padding:12px 18px;}
+  .hero-actions .btn:not(.primary){background:rgba(242,238,226,.55);}
 
   .stamp{
     position:absolute; top:70px; right:28px;
@@ -185,6 +194,8 @@
     transition:transform .5s ease;
   }
   .card:hover .frame.contain img{filter:none; transform:scale(1.035);}
+  .card:focus-within{transform:rotate(0deg) translateY(-6px); box-shadow:10px 10px 0 var(--ink); z-index:5;}
+  .card:focus-within .frame img{filter:grayscale(0%) contrast(1.02); transform:scale(1.04);}
   .cap{
     background:var(--paper); padding:14px 16px 16px;
     display:flex; justify-content:space-between; align-items:flex-end; gap:8px;
@@ -254,6 +265,7 @@
   .contact-links{
     display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:10px;
   }
+  .contact-note{font-size:12px; opacity:.72; margin:22px 0 0;}
   .btn{
     display:inline-block; padding:15px 28px; border:2px solid var(--ink);
     font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700;
@@ -277,9 +289,14 @@
     .stamp{width:92px; height:92px; top:20px; right:16px;}
   }
   @media (max-width:560px){
+    .wrap{padding-left:18px; padding-right:18px;}
+    .navrow{padding-left:18px !important; padding-right:18px !important;}
     .work-grid{grid-template-columns:1fr;}
-    nav ul{display:none;}
-    .hero{padding:60px 0 40px;}
+    .brand{font-size:18px;}
+    nav ul{display:flex; gap:10px; font-size:9px; letter-spacing:1px;}
+      .hero{padding:60px 0 40px;}
+    .hero-lede{max-width:34rem; font-size:14px; line-height:1.75; margin:26px 0 0;}
+    .hero-actions{margin-top:24px;}
     .strip{flex-wrap:wrap;}
     .strip div{flex:1 1 50%; border-bottom:1.5px dashed var(--ink);}
   }
@@ -293,6 +310,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="noise"></div>
 
 <header>
@@ -308,15 +326,21 @@
   </div>
 </header>
 
+<main id="main">
 <section class="hero" id="top">
   <div class="wrap hero-inner">
-    <span class="eyebrow">Beginner · Experimenting on purpose</span>
+    <span class="eyebrow">Graphic designer · Experimenting on purpose</span>
     <h1>GRAPHIC<br><span class="line2">DESIGN<span class="accent">.</span></span></h1>
+    <p class="hero-lede">Bold posters, collage, typography, and identity experiments for independent brands, artists, and unusual briefs.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#work">Explore the work</a>
+      <a class="btn" href="#contact">Start a project</a>
+    </div>
 
     <div class="hero-meta">
       <div>
         <div class="k">Who</div>
-        <p>Shubham Shukla, 20 — self-taught, still figuring out my style and enjoying every second of it.</p>
+        <p>Shubham Shukla, 20 — self-taught and building a visual language through every project.</p>
       </div>
       <div>
         <div class="k">Approach</div>
@@ -324,7 +348,7 @@
       </div>
       <div>
         <div class="k">Status</div>
-        <p>Open to small projects, collabs, and anything weird enough to teach me something new.</p>
+        <p>Available for small projects, collaborations, and briefs strange enough to push the work somewhere new.</p>
       </div>
     </div>
   </div>
@@ -345,19 +369,19 @@
 </section>
 
 <div class="wrap">
-  <div class="section-head" id="work">
+    <div class="section-head" id="work">
     <h2>Selected<br>Work</h2>
     <div>
-      <span class="tag">09 pieces / practice log</span>
-      <p class="section-note" style="margin-top:12px;">A running board of what I've made while learning — posters, collage, product art, type studies. Pinned as-is, mess included.</p>
+      <span class="tag">09 pieces / selected experiments</span>
+      <p class="section-note" style="margin-top:12px;">A visual log of posters, collage, product art, identity marks, and layout studies. Each piece is an experiment with a clear point of view.</p>
     </div>
   </div>
 
   <div class="work-grid">
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
-      <div class="frame"><img src="assets/work-01-crimson-covenant.png" alt="The Crimson Covenant — horror movie poster design with a red handprint over a portrait" loading="lazy"></div>
+      <div class="frame"><img src="assets/work-01-crimson-covenant.png" alt="The Crimson Covenant — horror movie poster design with a red handprint over a portrait" loading="eager" fetchpriority="high"></div>
       <div class="cap">
         <div>
           <div class="t">The Crimson Covenant</div>
@@ -367,7 +391,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame"><img src="assets/work-02-self-collage.png" alt="Black and white collage with vinyl record, camera, and star illustration" loading="lazy"></div>
       <div class="cap">
@@ -379,7 +403,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame"><img src="assets/work-03-strawberry.png" alt="Bold strawberry product poster with milk splash graphic" loading="lazy"></div>
       <div class="cap">
@@ -391,7 +415,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-04.png" alt="The Cross — diamond mark logo design" loading="lazy"></div>
       <div class="cap">
@@ -403,7 +427,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-05.png" alt="Drip — wordmark logo design" loading="lazy"></div>
       <div class="cap">
@@ -415,7 +439,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-06.png" alt="Boon Art Gallery — logo design" loading="lazy"></div>
       <div class="cap">
@@ -427,7 +451,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-07.png" alt="Matthew Smith — content creator business card design" loading="lazy"></div>
       <div class="cap">
@@ -439,7 +463,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-08.png" alt="Gwen Brown — luxury properties business card design" loading="lazy"></div>
       <div class="cap">
@@ -451,7 +475,7 @@
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" tabindex="0">
       <span class="pin"></span>
       <div class="frame contain"><img src="assets/work-09.png" alt="Hell Gaming Cafe — business card design" loading="lazy"></div>
       <div class="cap">
@@ -474,11 +498,11 @@
   <div class="wrap about-grid">
     <div class="id-card">
       <h3>Shubham Shukla</h3>
-      <div class="role">Graphic Designer, In Training</div>
+      <div class="role">Graphic Designer · Building in Public</div>
       <div class="id-row"><span class="k">Age</span><span class="v">20</span></div>
       <div class="id-row"><span class="k">Based in</span><span class="v">India</span></div>
-      <div class="id-row"><span class="k">Level</span><span class="v">Beginner </span></div>
-      <div class="id-row"><span class="k">Tools</span><span class="v">Photoshop, adobe</span></div>
+      <div class="id-row"><span class="k">Focus</span><span class="v">Experimental design</span></div>
+      <div class="id-row"><span class="k">Tools</span><span class="v">Adobe Photoshop</span></div>
       <div class="id-row"><span class="k">Best trait</span><span class="v">Won't stop trying new things</span></div>
       <div class="id-row"><span class="k">Email</span><span class="v">shubhamshukla8926@gmail.com</span></div>
       <div class="id-row"><span class="k">Instagram</span><span class="v">@iikidnapkiddss</span></div>
@@ -487,8 +511,8 @@
     <div class="about-copy">
       <span class="eyebrow">About me</span>
       <h2>New to the craft.<br>Not new to the obsession.</h2>
-      <p>I'm Shubham — 20 years old and a beginner graphic designer who's fully in the "try everything" phase. Movie poster one week, product ad the next, a weird self-portrait collage after that. I don't stick to one lane because I haven't found the walls of it yet.</p>
-      <p>Every piece here is a small experiment: a new technique, a new mood, a new mistake I learned something from. That's the whole method right now — make it, question it, make the next one better.</p>
+      <p>I'm Shubham — a self-taught graphic designer exploring the space between bold composition, image-making, and type. My work moves from movie posters to product visuals, identity marks, and collage because every format teaches me something different.</p>
+      <p>Every piece here is a focused experiment: a new technique, a new mood, or a new visual problem to solve. The method is simple — make it, question it, and make the next one better.</p>
       <div class="chips">
         <span class="chip">Poster Design</span>
         <span class="chip">Photo Collage</span>
@@ -503,13 +527,15 @@
 <section class="contact wrap" id="contact">
   <span class="eyebrow">Let's make something</span>
   <h2>Got a weird<br>idea? Send it.</h2>
-  <p class="section-note" style="margin:0 auto 10px; text-align:center;">Open to small gigs, collabs, and briefs strange enough to push me somewhere new.</p>
+  <p class="section-note" style="margin:0 auto 10px; text-align:center;">Open to small gigs, collabs, and briefs strange enough to push me somewhere new. Tell me what you're making, what you need, and when you need it.</p>
   <div class="contact-links">
     <a class="btn primary" href="mailto:shubhamshukla8926@gmail.com">Email Me</a>
     <a class="btn" href="https://instagram.com/iikidnapkiddss" target="_blank" rel="noopener">@iikidnapkiddss</a>
     <a class="btn" href="#work">See The Work</a>
   </div>
+  <p class="contact-note">Usually best reached by email · Instagram DMs are welcome too</p>
 </section>
+</main>
 
 <footer class="wrap">
   <div>© 2026 Shubham Shukla — Graphic Design</div>
