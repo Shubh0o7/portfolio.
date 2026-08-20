@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shubham Shukla — Graphic Designer</title>
-<meta name="description" content="Shubham Shukla is a graphic designer creating bold posters, collage, typography, and identity experiments for independent brands and creative projects.">
+<meta name="description" content="Shubham Shukla is a graphic designer creating bold posters, collage, typography, identity, and social campaigns for creative projects and independent brands.">
 <meta name="theme-color" content="#F2EEE2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@
     --punch:#FF3D68;
     --tape:#c9c1a8;
     --line: rgba(21,19,15,0.14);
-    --stamp: #b8121d;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -29,11 +28,15 @@
     -webkit-font-smoothing:antialiased;
   }
   ::selection{background:var(--crimson); color:var(--paper);}
-
   a{color:inherit;}
-  .skip-link{position:absolute; left:16px; top:-80px; z-index:100; background:var(--crimson); color:var(--paper); padding:10px 14px; text-decoration:none; font-size:12px; font-weight:700;}
+  img{max-width:100%; display:block;}
+  .skip-link{position:absolute; left:16px; top:-80px; z-index:300; background:var(--crimson); color:var(--paper); padding:10px 14px; text-decoration:none; font-size:12px; font-weight:700;}
   .skip-link:focus{top:16px;}
-  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  .hero-lede{max-width:680px; font-size:clamp(14px,1.5vw,17px); line-height:1.7; margin:26px 0 0;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px;}
+  .hero-actions .btn{padding:12px 18px;}
+  .hero-actions .btn:not(.primary){background:rgba(242,238,226,.55);}
+  button{font-family:inherit;}
 
   .noise{
     position:fixed; inset:0; pointer-events:none; z-index:999;
@@ -81,24 +84,15 @@
     display:inline-flex; align-items:center; gap:10px;
     font-size:12px; letter-spacing:3px; text-transform:uppercase;
     border:1.5px solid var(--ink); padding:6px 12px; border-radius:100px;
-    margin-bottom:26px;
+    margin-bottom:26px; background:var(--paper);
   }
-  .eyebrow::before{content:"●"; color:var(--crimson); font-size:10px;}
+  .eyebrow::before{content:"● "; color:var(--crimson); font-size:10px;}
 
   .hero h1{
-    font-family:'Anton', sans-serif;
-    font-weight:400;
-    text-transform:uppercase;
-    line-height:0.86;
-    margin:0;
-    font-size:clamp(52px, 10.5vw, 148px);
-    letter-spacing:-1px;
+    font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase;
+    line-height:0.86; margin:0; font-size:clamp(52px, 10.5vw, 148px); letter-spacing:-1px;
   }
-  .hero h1 .line2{
-    color:var(--paper);
-    -webkit-text-stroke:2px var(--ink);
-    text-stroke:2px var(--ink);
-  }
+  .hero h1 .line2{color:var(--paper); -webkit-text-stroke:2px var(--ink);}
   .hero h1 .accent{color:var(--crimson); -webkit-text-stroke:0;}
 
   .hero-meta{
@@ -108,14 +102,9 @@
   .hero-meta div{max-width:280px;}
   .hero-meta .k{font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--crimson); margin-bottom:8px; font-weight:700;}
   .hero-meta p{margin:0; font-size:13.5px; line-height:1.7;}
-  .hero-lede{max-width:680px; font-size:clamp(14px,1.5vw,17px); line-height:1.7; margin:26px 0 0;}
-  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;}
-  .hero-actions .btn{padding:12px 18px;}
-  .hero-actions .btn:not(.primary){background:rgba(242,238,226,.55);}
 
   .stamp{
-    position:absolute; top:70px; right:28px;
-    width:132px; height:132px; z-index:3;
+    position:absolute; top:70px; right:28px; width:132px; height:132px; z-index:3;
     animation: spin 22s linear infinite;
   }
   @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
@@ -124,7 +113,7 @@
   /* ---------- SECTION LABELS ---------- */
   .section-head{
     display:flex; align-items:baseline; justify-content:space-between;
-    gap:20px; padding:64px 0 30px; flex-wrap:wrap;
+    gap:20px; padding:64px 0 26px; flex-wrap:wrap;
   }
   .section-head h2{
     font-family:'Anton', sans-serif; text-transform:uppercase;
@@ -136,14 +125,23 @@
   }
   .section-note{font-size:13px; max-width:360px; line-height:1.7; margin:0;}
 
-  /* ---------- WORK GRID ---------- */
-  .filter-bar{display:flex; flex-wrap:wrap; gap:10px; margin:-8px 0 34px;}
-  .filter-btn{appearance:none; border:1.5px solid var(--ink); background:transparent; color:var(--ink); padding:9px 13px; font:700 11px 'Space Mono',monospace; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:.2s ease;}
-  .filter-btn:hover,.filter-btn[aria-pressed="true"]{background:var(--ink); color:var(--paper); transform:translate(-2px,-2px); box-shadow:3px 3px 0 var(--crimson);}
-  .filter-btn:focus-visible{outline:3px solid var(--crimson); outline-offset:3px;}
-  .card.is-hidden{display:none;}
-  .filter-status{font-size:11px; opacity:.65; margin:0 0 18px;}
+  /* ---------- FILTERS ---------- */
+  .filters{
+    display:flex; flex-wrap:wrap; gap:10px; padding-bottom:34px;
+  }
+  .filter-btn{
+    border:1.5px solid var(--ink); background:transparent; color:var(--ink);
+    padding:8px 16px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    font-weight:700; cursor:pointer; border-radius:100px; font-family:'Space Mono',monospace;
+    transition:.2s ease;
+  }
+  .filter-btn:hover{background:var(--ink); color:var(--paper);}
+  .filter-btn.active{background:var(--crimson); border-color:var(--crimson); color:var(--paper);}
+  .filter-status{font-size:11px; opacity:.65; margin:-20px 0 22px;}
+  .card:focus-visible{outline:3px solid var(--crimson); outline-offset:4px;}
+  .card[hidden]{display:none;}
 
+  /* ---------- WORK GRID ---------- */
   .work-grid{
     display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
     padding-bottom:40px;
@@ -152,31 +150,23 @@
     position:relative; background:var(--ink); border:2px solid var(--ink);
     overflow:hidden; cursor:pointer;
     transform:rotate(var(--r,0deg));
-    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, opacity .25s ease;
   }
-  .card:nth-child(1){--r:-1.4deg;}
-  .card:nth-child(2){--r:1deg;}
-  .card:nth-child(3){--r:-0.6deg;}
-  .card:nth-child(4){--r:1.6deg;}
-  .card:nth-child(5){--r:-1deg;}
-  .card:nth-child(6){--r:0.8deg;}
-  .card:nth-child(7){--r:-1.2deg;}
-  .card:nth-child(8){--r:1.3deg;}
-  .card:nth-child(9){--r:-0.4deg;}
-  .card:hover{
-    transform:rotate(0deg) translateY(-6px);
-    box-shadow:10px 10px 0 var(--ink);
-    z-index:5;
-  }
+  .card:hover{ transform:rotate(0deg) translateY(-6px); box-shadow:10px 10px 0 var(--ink); z-index:5; }
+  .card.hidden{ display:none; }
   .card .pin{
     position:absolute; top:10px; left:50%; transform:translateX(-50%);
     width:14px; height:14px; border-radius:50%;
-    background:var(--crimson); box-shadow:0 2px 0 rgba(0,0,0,.4);
-    z-index:4;
+    background:var(--crimson); box-shadow:0 2px 0 rgba(0,0,0,.4); z-index:4;
+  }
+  .card .stackbadge{
+    position:absolute; top:10px; right:10px; z-index:4;
+    background:var(--paper); color:var(--ink); border:1.5px solid var(--ink);
+    font-size:10px; font-weight:700; letter-spacing:1px; padding:4px 9px; border-radius:100px;
   }
   .frame{
     aspect-ratio:4/5; overflow:hidden; background:#0d0c0a;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:center; position:relative;
   }
   .frame img{
     width:100%; height:100%; object-fit:cover;
@@ -185,7 +175,6 @@
   }
   .card:hover .frame img{filter:grayscale(0%) contrast(1.02); transform:scale(1.04);}
 
-  /* Logo marks & business cards: show the full piece, never crop it */
   .frame.contain{
     background:
       linear-gradient(135deg, #23211c 25%, transparent 25%) -11px 0/22px 22px,
@@ -201,15 +190,27 @@
     transition:transform .5s ease;
   }
   .card:hover .frame.contain img{filter:none; transform:scale(1.035);}
-  .card:focus-within{transform:rotate(0deg) translateY(-6px); box-shadow:10px 10px 0 var(--ink); z-index:5;}
-  .card:focus-within .frame img{filter:grayscale(0%) contrast(1.02); transform:scale(1.04);}
+
   .cap{
     background:var(--paper); padding:14px 16px 16px;
     display:flex; justify-content:space-between; align-items:flex-end; gap:8px;
   }
   .cap .t{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; line-height:1.3;}
-  .cap .n{font-size:11px; color:var(--crimson); font-weight:700;}
+  .cap .n{font-size:11px; color:var(--crimson); font-weight:700; white-space:nowrap;}
   .cap .tags{font-size:10px; letter-spacing:1px; text-transform:uppercase; opacity:0.6; margin-top:4px;}
+
+  /* Featured (Sociocool) card spans wider */
+  .card.feature{ grid-column:span 2; }
+  .card.feature .frame{ aspect-ratio:16/9; }
+  @media (max-width:900px){ .card.feature{ grid-column:span 2; } .card.feature .frame{aspect-ratio:4/5;} }
+  @media (max-width:560px){ .card.feature{ grid-column:span 1; } }
+
+  /* peek stack effect on feature cover */
+  .peekstack{position:absolute; inset:0;}
+  .peekstack img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
+  .peekstack img:nth-child(1){transform:rotate(0deg); z-index:3;}
+  .peekstack img:nth-child(2){display:none;}
+  .peekstack img:nth-child(3){display:none;}
 
   /* ---------- ABOUT ---------- */
   .about{
@@ -218,26 +219,21 @@
   }
   .about-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:60px; align-items:center;}
   .id-card{
-    background:var(--paper); color:var(--ink);
-    border:2px solid var(--paper); padding:26px;
-    transform:rotate(-2deg);
-    position:relative;
+    background:var(--paper); color:var(--ink); border:2px solid var(--paper); padding:26px;
+    transform:rotate(-2deg); position:relative;
   }
   .id-card::before{
     content:"SPECIMEN"; position:absolute; top:12px; right:16px;
     font-size:10px; letter-spacing:2px; color:var(--crimson); font-weight:700;
   }
-  .id-row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px dashed var(--line); font-size:12.5px;}
+  .id-row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px dashed var(--line); font-size:12.5px; gap:10px;}
   .id-row:last-child{border-bottom:none;}
-  .id-row .k{text-transform:uppercase; letter-spacing:1.5px; opacity:0.55; font-size:10.5px;}
-  .id-row .v{font-weight:700; text-align:right;}
-  .id-card h3{
-    font-family:'Anton', sans-serif; text-transform:uppercase;
-    font-size:30px; margin:0 0 4px;
-  }
+  .id-row .k{text-transform:uppercase; letter-spacing:1.5px; opacity:0.55; font-size:10.5px; white-space:nowrap;}
+  .id-row .v{font-weight:700; text-align:right; word-break:break-word;}
+  .id-card h3{font-family:'Anton', sans-serif; text-transform:uppercase; font-size:30px; margin:0 0 4px;}
   .id-card .role{font-size:12px; color:var(--crimson); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:18px;}
 
-  .about-copy .eyebrow{border-color:var(--paper);}
+  .about-copy .eyebrow{border-color:var(--paper); background:transparent;}
   .about-copy .eyebrow::before{color:var(--punch);}
   .about-copy h2{
     font-family:'Anton', sans-serif; text-transform:uppercase; line-height:0.92;
@@ -251,18 +247,22 @@
   }
 
   /* ---------- PROCESS STRIP ---------- */
-  .strip{
-    display:flex; border-bottom:2px solid var(--ink); overflow:hidden;
-  }
+  .strip{ display:flex; border-bottom:2px solid var(--ink); overflow:hidden; }
   .strip div{
     flex:1; padding:20px 10px; text-align:center; font-size:11px;
-    letter-spacing:2px; text-transform:uppercase; border-right:1.5px dashed var(--ink);
-    font-weight:700;
+    letter-spacing:2px; text-transform:uppercase; border-right:1.5px dashed var(--ink); font-weight:700;
   }
   .strip div:last-child{border-right:none;}
   .strip div:nth-child(odd){background:var(--ink); color:var(--paper);}
 
   /* ---------- CONTACT ---------- */
+  .contact{padding:80px 0 50px; text-align:center;}
+  .contact .eyebrow{margin-bottom:22px;}
+  .contact h2{
+    font-family:'Anton', sans-serif; text-transform:uppercase;
+    font-size:clamp(40px, 9vw, 104px); line-height:0.88; margin:0 0 30px;
+  }
+  .contact-links{ display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:10px; }
   .contact-form{max-width:760px; margin:34px auto 0; text-align:left; border:2px solid var(--ink); padding:24px; background:rgba(242,238,226,.7);}
   .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
   .field{display:flex; flex-direction:column; gap:7px;}
@@ -274,30 +274,71 @@
   .form-actions{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:20px;}
   .form-help{font-size:11px; line-height:1.6; opacity:.65; margin:0; max-width:390px;}
   .form-status{font-size:12px; color:var(--crimson); font-weight:700; margin:14px 0 0; min-height:18px;}
-
-  .contact{padding:80px 0 50px; text-align:center;}
-  .contact .eyebrow{margin-bottom:22px;}
-  .contact h2{
-    font-family:'Anton', sans-serif; text-transform:uppercase;
-    font-size:clamp(40px, 9vw, 104px); line-height:0.88; margin:0 0 30px;
-  }
-  .contact-links{
-    display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:10px;
-  }
-  .contact-note{font-size:12px; opacity:.72; margin:22px 0 0;}
   .btn{
     display:inline-block; padding:15px 28px; border:2px solid var(--ink);
     font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700;
-    text-decoration:none; background:transparent; transition:.2s ease;
+    text-decoration:none; background:transparent; transition:.2s ease; cursor:pointer;
   }
   .btn.primary{background:var(--crimson); border-color:var(--crimson); color:var(--paper);}
   .btn:hover{transform:translate(-3px,-3px); box-shadow:5px 5px 0 var(--ink);}
-  .btn.primary:hover{box-shadow:5px 5px 0 var(--ink);}
 
   footer{
     border-top:2px solid var(--ink); padding:22px 0; font-size:11px;
     display:flex; justify-content:space-between; letter-spacing:1px;
     text-transform:uppercase; opacity:0.7; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(10,9,7,0.94); z-index:200;
+    display:none; align-items:center; justify-content:center; padding:24px;
+    backdrop-filter:blur(2px);
+  }
+  .lightbox.open{display:flex;}
+  .lb-inner{
+    max-width:920px; width:100%; max-height:92vh;
+    background:var(--paper); border:2px solid var(--ink);
+    display:flex; flex-direction:column; position:relative;
+    animation:pop .25s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop{ from{transform:scale(0.94); opacity:0;} to{transform:scale(1); opacity:1;} }
+  .lb-stage{
+    position:relative; background:#0d0c0a; flex:1; min-height:0;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    aspect-ratio:4/5; max-height:66vh;
+  }
+  .lb-stage img{ width:100%; height:100%; object-fit:contain; }
+  .lb-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%; background:var(--paper);
+    border:2px solid var(--ink); font-size:18px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; z-index:5;
+  }
+  .lb-nav:hover{background:var(--crimson); color:var(--paper); border-color:var(--crimson);}
+  .lb-prev{left:14px;} .lb-next{right:14px;}
+  .lb-close{
+    position:absolute; top:12px; right:12px; z-index:6;
+    width:36px; height:36px; border-radius:50%; background:var(--ink); color:var(--paper);
+    border:2px solid var(--paper); font-size:16px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lb-close:hover{background:var(--crimson);}
+  .lb-info{ padding:16px 20px; border-top:2px solid var(--ink); }
+  .lb-info .row1{ display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+  .lb-info h4{ font-family:'Anton', sans-serif; text-transform:uppercase; margin:0 0 4px; font-size:19px; letter-spacing:0.3px;}
+  .lb-info .meta{font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; opacity:0.6; margin-bottom:8px;}
+  .lb-info .counter{font-size:11px; color:var(--crimson); font-weight:700; white-space:nowrap;}
+  .lb-info p{font-size:13px; line-height:1.6; margin:0;}
+  .lb-dots{ display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+  .lb-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--tape); cursor:pointer; border:none; padding:0;
+    transition:.2s ease;
+  }
+  .lb-dot.active{background:var(--crimson); width:22px; border-radius:5px;}
+
+  @media (max-width:640px){
+    .lb-nav{width:36px; height:36px; font-size:15px;}
+    .lb-stage{max-height:52vh;}
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -308,28 +349,22 @@
     .stamp{width:92px; height:92px; top:20px; right:16px;}
   }
   @media (max-width:560px){
+    .work-grid{grid-template-columns:1fr;}
     .wrap{padding-left:18px; padding-right:18px;}
     .navrow{padding-left:18px !important; padding-right:18px !important;}
-    .work-grid{grid-template-columns:1fr;}
     .brand{font-size:18px;}
     nav ul{display:flex; gap:10px; font-size:9px; letter-spacing:1px;}
-      .hero{padding:60px 0 40px;}
-    .hero-lede{max-width:34rem; font-size:14px; line-height:1.75; margin:26px 0 0;}
-    .hero-actions{margin-top:24px;}
-    .strip{flex-wrap:wrap;}
-      .strip div{flex:1 1 50%; border-bottom:1.5px dashed var(--ink);}
+    .hero{padding:60px 0 40px;}
+    .hero-actions .btn{width:100%; text-align:center;}
     .contact-form{padding:18px;}
     .form-grid{grid-template-columns:1fr;}
     .field.full{grid-column:auto;}
     .form-actions{align-items:flex-start;}
     .form-actions .btn{width:100%; text-align:center;}
+    .strip{flex-wrap:wrap;}
+    .strip div{flex:1 1 50%; border-bottom:1.5px dashed var(--ink);}
   }
-
-  @media (prefers-reduced-motion: reduce){
-    .stamp{animation:none;}
-    *{transition:none !important;}
-  }
-
+  @media (prefers-reduced-motion: reduce){ .stamp{animation:none;} *{transition:none !important;} }
   :focus-visible{outline:3px solid var(--crimson); outline-offset:2px;}
 </style>
 </head>
@@ -355,33 +390,29 @@
   <div class="wrap hero-inner">
     <span class="eyebrow">Graphic designer · Experimenting on purpose</span>
     <h1>GRAPHIC<br><span class="line2">DESIGN<span class="accent">.</span></span></h1>
-    <p class="hero-lede">Bold posters, collage, typography, and identity experiments for independent brands, artists, and unusual briefs.</p>
+    <p class="hero-lede">Bold posters, collage, identity, and social campaigns for independent brands, artists, and unusual briefs.</p>
     <div class="hero-actions">
       <a class="btn primary" href="#work">Explore the work</a>
       <a class="btn" href="#contact">Start a project</a>
     </div>
-
     <div class="hero-meta">
       <div>
         <div class="k">Who</div>
-        <p>Shubham Shukla, 20 — self-taught and building a visual language through every project.</p>
+        <p>Shubham Shukla, 20 — self-taught, still figuring out my style and enjoying every second of it.</p>
       </div>
       <div>
         <div class="k">Approach</div>
-        <p>I treat every project like a lab. Posters, collage, product art, type — if I haven't tried it yet, that's exactly why I want to.</p>
+        <p>I treat every project like a lab. Posters, collage, branding, full campaigns — if I haven't tried it yet, that's exactly why I want to.</p>
       </div>
       <div>
         <div class="k">Status</div>
-        <p>Available for small projects, collaborations, and briefs strange enough to push the work somewhere new.</p>
+        <p>Open to small projects, collabs, and anything weird enough to teach me something new.</p>
       </div>
     </div>
   </div>
-
   <div class="stamp" aria-hidden="true">
     <svg viewBox="0 0 200 200">
-      <defs>
-        <path id="circlePath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
-      </defs>
+      <defs><path id="circlePath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
       <circle cx="100" cy="100" r="96" fill="none" stroke="#15130f" stroke-width="2"/>
       <circle cx="100" cy="100" r="60" fill="none" stroke="#15130f" stroke-width="1.5" stroke-dasharray="3 5"/>
       <text font-family="Space Mono, monospace" font-size="13" font-weight="700" letter-spacing="3" fill="#15130f">
@@ -393,134 +424,18 @@
 </section>
 
 <div class="wrap">
-    <div class="section-head" id="work">
+  <div class="section-head" id="work">
     <h2>Selected<br>Work</h2>
     <div>
-      <span class="tag">09 pieces / selected experiments</span>
-      <p class="section-note" style="margin-top:12px;">A visual log of posters, collage, product art, identity marks, and layout studies. Each piece is an experiment with a clear point of view.</p>
+      <span class="tag" id="countTag">12 projects / selected experiments</span>
+      <p class="section-note" style="margin-top:12px;">Click any piece to open it full-size. Campaigns and paired logos open as scrollable sets with captions, arrows, and touch support.</p>
     </div>
   </div>
 
-  <div class="filter-bar" role="group" aria-label="Filter projects by category">
-    <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All work</button>
-    <button class="filter-btn" type="button" data-filter="poster" aria-pressed="false">Posters</button>
-    <button class="filter-btn" type="button" data-filter="collage" aria-pressed="false">Collage</button>
-    <button class="filter-btn" type="button" data-filter="logo" aria-pressed="false">Identity</button>
-    <button class="filter-btn" type="button" data-filter="card" aria-pressed="false">Layouts</button>
-  </div>
-  <p class="filter-status" id="filter-status" role="status" aria-live="polite">Showing all 9 projects</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter projects by category"></div>
+  <p class="filter-status" id="filter-status" role="status" aria-live="polite">Showing all 12 projects</p>
 
-  <div class="work-grid">
-
-    <article class="card" data-category="poster" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame"><img src="assets/work-01-crimson-covenant.png" alt="The Crimson Covenant — horror movie poster design with a red handprint over a portrait" loading="eager" fetchpriority="high"></div>
-      <div class="cap">
-        <div>
-          <div class="t">The Crimson Covenant</div>
-          <div class="tags">Poster · Horror / Film</div>
-        </div>
-        <div class="n">01</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="collage" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame"><img src="assets/work-02-self-collage.png" alt="Black and white collage with vinyl record, camera, and star illustration" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Static &amp; Stereo</div>
-          <div class="tags">Collage · Portrait</div>
-        </div>
-        <div class="n">02</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="poster" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame"><img src="assets/work-03-strawberry.png" alt="Bold strawberry product poster with milk splash graphic" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Strawberry Splash</div>
-          <div class="tags">Poster · Product</div>
-        </div>
-        <div class="n">03</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="logo" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-04.png" alt="The Cross — diamond mark logo design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">The Cross</div>
-          <div class="tags">Logo Mark · Branding</div>
-        </div>
-        <div class="n">04</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="logo" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-05.png" alt="Drip — wordmark logo design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Drip</div>
-          <div class="tags">Logo Mark · Branding</div>
-        </div>
-        <div class="n">05</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="logo" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-06.png" alt="Boon Art Gallery — logo design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Boon Art Gallery</div>
-          <div class="tags">Logo Mark · Branding</div>
-        </div>
-        <div class="n">06</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="card" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-07.png" alt="Matthew Smith — content creator business card design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Matthew Smith Card</div>
-          <div class="tags">Business Card · Layout</div>
-        </div>
-        <div class="n">07</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="card" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-08.png" alt="Gwen Brown — luxury properties business card design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Gwen Brown Card</div>
-          <div class="tags">Business Card · Layout</div>
-        </div>
-        <div class="n">08</div>
-      </div>
-    </article>
-
-    <article class="card" data-category="card" tabindex="0">
-      <span class="pin"></span>
-      <div class="frame contain"><img src="assets/work-09.png" alt="Hell Gaming Cafe — business card design" loading="lazy"></div>
-      <div class="cap">
-        <div>
-          <div class="t">Hell Gaming Café Card</div>
-          <div class="tags">Business Card · Layout</div>
-        </div>
-        <div class="n">09</div>
-      </div>
-    </article>
-
-  </div>
+  <div class="work-grid" id="workGrid"></div>
 </div>
 
 <div class="strip" aria-hidden="true">
@@ -540,17 +455,16 @@
       <div class="id-row"><span class="k">Email</span><span class="v">shubhamshukla8926@gmail.com</span></div>
       <div class="id-row"><span class="k">Instagram</span><span class="v">@iikidnapkiddss</span></div>
     </div>
-
     <div class="about-copy">
       <span class="eyebrow">About me</span>
       <h2>New to the craft.<br>Not new to the obsession.</h2>
-      <p>I'm Shubham — a self-taught graphic designer exploring the space between bold composition, image-making, and type. My work moves from movie posters to product visuals, identity marks, and collage because every format teaches me something different.</p>
+      <p>I'm Shubham — a self-taught graphic designer exploring the space between bold composition, image-making, and type. My work moves from movie posters to product visuals, identity marks, and full social campaigns because every format teaches me something different.</p>
       <p>Every piece here is a focused experiment: a new technique, a new mood, or a new visual problem to solve. The method is simple — make it, question it, and make the next one better.</p>
       <div class="chips">
         <span class="chip">Poster Design</span>
         <span class="chip">Photo Collage</span>
-        <span class="chip">Typography</span>
-        <span class="chip">Product Art</span>
+        <span class="chip">Branding &amp; Logos</span>
+        <span class="chip">Social Campaigns</span>
         <span class="chip">Always Learning</span>
       </div>
     </div>
@@ -563,37 +477,13 @@
   <p class="section-note" style="margin:0 auto 10px; text-align:center;">Open to small gigs, collabs, and briefs strange enough to push me somewhere new. Tell me what you're making, what you need, and when you need it.</p>
   <form class="contact-form" id="contact-form">
     <div class="form-grid">
-      <div class="field">
-        <label for="contact-name">Your name</label>
-        <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required>
-      </div>
-      <div class="field">
-        <label for="contact-email">Your email</label>
-        <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required>
-      </div>
-      <div class="field">
-        <label for="contact-type">Project type</label>
-        <select id="contact-type" name="project_type" required>
-          <option value="" selected disabled>Choose one</option>
-          <option>Poster or campaign artwork</option>
-          <option>Logo or identity</option>
-          <option>Social or product visuals</option>
-          <option>Something unusual</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="contact-timeline">Timeline</label>
-        <input id="contact-timeline" name="timeline" type="text" placeholder="Whenever you need it">
-      </div>
-      <div class="field full">
-        <label for="contact-message">Tell me about it</label>
-        <textarea id="contact-message" name="message" placeholder="What are you making, and how can I help?" required></textarea>
-      </div>
+      <div class="field"><label for="contact-name">Your name</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required></div>
+      <div class="field"><label for="contact-email">Your email</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required></div>
+      <div class="field"><label for="contact-type">Project type</label><select id="contact-type" name="project_type" required><option value="" selected disabled>Choose one</option><option>Poster or campaign artwork</option><option>Logo or identity</option><option>Social or product visuals</option><option>Something unusual</option></select></div>
+      <div class="field"><label for="contact-timeline">Timeline</label><input id="contact-timeline" name="timeline" type="text" placeholder="Whenever you need it"></div>
+      <div class="field full"><label for="contact-message">Tell me about it</label><textarea id="contact-message" name="message" placeholder="What are you making, and how can I help?" required></textarea></div>
     </div>
-    <div class="form-actions">
-      <p class="form-help">This opens your email app with the project details filled in. No account or server is required.</p>
-      <button class="btn primary" type="submit">Build the email</button>
-    </div>
+    <div class="form-actions"><p class="form-help">This opens your email app with the project details filled in. No account or server is required.</p><button class="btn primary" type="submit">Build the email</button></div>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
   </form>
   <div class="contact-links">
@@ -601,7 +491,6 @@
     <a class="btn" href="https://instagram.com/iikidnapkiddss" target="_blank" rel="noopener">@iikidnapkiddss</a>
     <a class="btn" href="#work">See The Work</a>
   </div>
-  <p class="contact-note">Usually best reached by email · Instagram DMs are welcome too</p>
 </section>
 </main>
 
@@ -610,47 +499,261 @@
   <div>Made with intent, some chaos, and a lot of undo (Ctrl+Z)</div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <div class="lb-stage">
+      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+      <img id="lbImg" src="" alt="">
+      <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+    </div>
+    <div class="lb-info">
+      <div class="row1">
+        <div>
+          <h4 id="lbTitle"></h4>
+          <div class="meta" id="lbMeta"></div>
+        </div>
+        <div class="counter" id="lbCounter"></div>
+      </div>
+      <p id="lbCaption"></p>
+      <div class="lb-dots" id="lbDots"></div>
+    </div>
+  </div>
+</div>
+
 <script>
-  (() => {
-    const filterButtons = [...document.querySelectorAll('[data-filter]')];
-    const cards = [...document.querySelectorAll('.card[data-category]')];
-    const filterStatus = document.getElementById('filter-status');
-    const filterLabels = {all:'all', poster:'poster', collage:'collage', logo:'identity', card:'layout'};
+// ---------- PROJECT DATA ----------
+const projects = [
+  {
+    id:"crimson", title:"The Crimson Covenant", cat:"poster", tags:"Poster · Horror / Film", fit:"cover",
+    slides:[{src:"assets/work-01-crimson-covenant.png", caption:"A horror-movie poster study — grunge portrait with a bloodied handprint as the whole visual hook."}]
+  },
+  {
+    id:"static-stereo", title:"Static & Stereo", cat:"collage", tags:"Collage · Portrait", fit:"cover",
+    slides:[{src:"assets/work-02-self-collage.jpg", caption:"A black-and-white self-portrait collage built around a vinyl record, an old camera, and torn punk-zine textures."}]
+  },
+  {
+    id:"strawberry", title:"Strawberry Splash", cat:"poster", tags:"Poster · Product", fit:"cover",
+    slides:[{src:"assets/work-03-strawberry.jpg", caption:"A product poster study — milk-splash photography paired with bold outlined type."}]
+  },
+  {
+    id:"the-cross", title:"The Cross", cat:"branding", tags:"Logo Mark · Branding", fit:"contain",
+    slides:[{src:"assets/work-04.png", caption:"A diamond mark logo built from four triangles meeting at a point."}]
+  },
+  {
+    id:"drip", title:"Drip", cat:"branding", tags:"Logo Mark · Branding", fit:"contain",
+    slides:[{src:"assets/work-05.png", caption:"A wordmark logo with a droplet-shaped icon carved out of negative space."}]
+  },
+  {
+    id:"boon", title:"Boon Art Gallery", cat:"branding", tags:"Logo Mark · Branding", fit:"contain",
+    slides:[{src:"assets/work-06.png", caption:"A gallery logo mixing geometric letterforms with circular motifs."}]
+  },
+  {
+    id:"sl-monogram", title:"SL Monogram", cat:"branding", tags:"Logo Mark · Monogram · 2 pieces", fit:"contain",
+    slides:[
+      {src:"assets/sl-monogram-wreath.png", caption:"Version 1 — an intertwined S/L monogram wrapped in a botanical wreath, built for a wedding-style crest."},
+      {src:"assets/sl-monogram-rose.png", caption:"Version 2 — the same monogram simplified into a circular badge with a rose accent between the letters."}
+    ]
+  },
+  {
+    id:"matthew", title:"Matthew Smith Card", cat:"bizcard", tags:"Business Card · Layout", fit:"contain",
+    slides:[{src:"assets/work-07.png", caption:"A minimal content-creator business card — big condensed type, QR code, topographic linework."}]
+  },
+  {
+    id:"gwen", title:"Gwen Brown Card", cat:"bizcard", tags:"Business Card · Layout", fit:"contain",
+    slides:[{src:"assets/work-08.png", caption:"A luxury real-estate business card — serif monogram lockup on a deep green textured field."}]
+  },
+  {
+    id:"hell", title:"Hell Gaming Café Card", cat:"bizcard", tags:"Business Card · Layout", fit:"contain",
+    slides:[{src:"assets/work-09.png", caption:"A high-contrast gaming café card — checkerboard glitch mark on acid yellow."}]
+  },
+  {
+    id:"girls-sleepover", title:"Girls Sleepover", cat:"poster", tags:"Poster · Event", fit:"cover",
+    slides:[{src:"assets/girls-sleepover.jpg", caption:"An event poster experiment — vintage line-art hands, wine and lipstick, over a lipstick-kiss textured background."}]
+  },
+  {
+    id:"sociocool", title:"Sociocool — Full Campaign", cat:"campaign", tags:"Social Campaign · 19 pieces", fit:"cover", feature:true,
+    slides:[
+      {src:"assets/soc-01-brewing-lines1.jpg", caption:"Teaser 01 — \"something big is unfolding in...\" a mysterious line-art panorama begins."},
+      {src:"assets/soc-02-brewing-lines2.jpg", caption:"Teaser 02 — the hand-drawn lines continue across the next panel."},
+      {src:"assets/soc-03-brewing-lines3.jpg", caption:"Teaser 03 — the lines start converging, building anticipation."},
+      {src:"assets/soc-04-brewing-lines4.jpg", caption:"Teaser 04 — all lines meet at a single point, setting up the reveal."},
+      {src:"assets/soc-05-countdown-ends-soon.jpg", caption:"The payoff panel — \"the countdown ends soon\" with a vintage camera and a fabric star."},
+      {src:"assets/soc-06-pixel-countdown.jpg", caption:"A retro pixel-art countdown screen — \"are you ready?\" styled like an old video game prompt."},
+      {src:"assets/soc-07-somethings-brewing.jpg", caption:"\"Something's brewing... (and no, we're not talking coffee.)\" — a Polaroid camera and plush star tease the launch."},
+      {src:"assets/soc-08-new-people-new-plans.jpg", caption:"\"New people. New plans. New memories. You coming or what?\" — the direct invite."},
+      {src:"assets/soc-09-coming-soon-collage.jpg", caption:"A \"Coming Soon\" moodboard — disco ball, iced coffee, film camera, and a pink wire-frame collage."},
+      {src:"assets/soc-10-coming-soon-vinyl.jpg", caption:"\"Coming Soon by Sociocool\" — vintage script type over a glitter vinyl record."},
+      {src:"assets/soc-11-coming-soon-stay-tuned.jpg", caption:"Bold hand-lettered \"Coming Soon\" with Stay Tuned / Be Ready call-out tags."},
+      {src:"assets/soc-12-title-reveal.jpeg", caption:"The brand reveal — \"SOCIOCOOL, so we made this\" with scattered action tags: Meet, Play, Create, Roam, Repeat."},
+      {src:"assets/soc-13-what-is-sociocool.jpeg", caption:"The explainer slide — \"okay but... what IS Sociocool?\" irl plans, new faces, good chaos."},
+      {src:"assets/soc-14-catch-the-vibe.jpeg", caption:"Event promo — \"catch the VIBE tonight,\" bring your best energy, no boring conversations allowed."},
+      {src:"assets/soc-15-see-you-irl.jpeg", caption:"City-specific event promo — \"SEE YOU IRL\" for Vadodara, time to get off the group chat."},
+      {src:"assets/soc-16-is-this-your-thing.jpeg", caption:"A relatable checklist post — \"is this your kind of thing?\" targeting the exact audience."},
+      {src:"assets/soc-17-agenda.jpeg", caption:"\"What's on the agenda?\" — a 6-box grid of activity types: make, eat, do, go, meet, remember."},
+      {src:"assets/soc-18-pov-wanna-go-out.jpeg", caption:"A relatable chat-bubble post — \"POV: you wanna go out...\" everyone's busy, group chat went silent."},
+      {src:"assets/soc-19-sticker-gingham.png", caption:"A bonus sticker asset — \"THE SOCIOCOOL\" bubble type over a green gingham background, for stories/highlights."}
+    ]
+  }
+];
 
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        let visible = 0;
-        filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-        cards.forEach((card) => {
-          const matches = filter === 'all' || card.dataset.category === filter;
-          card.classList.toggle('is-hidden', !matches);
-          if (matches) visible += 1;
-        });
-        filterStatus.textContent = filter === 'all'
-          ? `Showing all ${visible} projects`
-          : `Showing ${visible} ${filterLabels[filter]} project${visible === 1 ? '' : 's'}`;
-      });
-    });
+const filterDefs = [
+  {key:"all", label:"All Work"},
+  {key:"poster", label:"Posters"},
+  {key:"collage", label:"Collage"},
+  {key:"branding", label:"Branding"},
+  {key:"bizcard", label:"Business Cards"},
+  {key:"campaign", label:"Campaigns"}
+];
 
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const subject = `${data.get('project_type')} enquiry from ${data.get('name')}`;
-      const body = [
-        `Name: ${data.get('name')}`,
-        `Email: ${data.get('email')}`,
-        `Project type: ${data.get('project_type')}`,
-        `Timeline: ${data.get('timeline') || 'Not specified'}`,
-        '',
-        data.get('message')
-      ].join('\\n');
-      status.textContent = 'Opening your email app…';
-      window.location.href = `mailto:shubhamshukla8926@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+const rotations = [-1.4,1,-0.6,1.6,-1,0.8,-1.2,1.3,-0.4,1.1,-0.9,0.6];
+
+// ---------- RENDER FILTERS ----------
+const filtersEl = document.getElementById('filters');
+filterDefs.forEach((f,i)=>{
+  const b = document.createElement('button');
+  b.className = 'filter-btn' + (f.key==='all' ? ' active' : '');
+  b.textContent = f.label;
+  b.dataset.filter = f.key;
+    b.setAttribute('aria-pressed', String(f.key === 'all'));
+    b.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(x=>{x.classList.remove('active'); x.setAttribute('aria-pressed','false');});
+    b.classList.add('active');
+    b.setAttribute('aria-pressed','true');
+    applyFilter(f.key);
+  });
+  filtersEl.appendChild(b);
+});
+
+function applyFilter(key){
+  let visible = 0;
+  document.querySelectorAll('.card').forEach(card=>{
+    const cat = card.dataset.cat;
+    const matches = key==='all' || cat===key;
+    card.classList.toggle('hidden', !matches);
+    if(matches) visible += 1;
+  });
+  document.getElementById('filter-status').textContent = key === 'all' ? `Showing all ${visible} projects` : `Showing ${visible} ${key} project${visible === 1 ? '' : 's'}`;
+}
+
+// ---------- RENDER GRID ----------
+const grid = document.getElementById('workGrid');
+projects.forEach((p, i)=>{
+  const card = document.createElement('article');
+  card.className = 'card' + (p.feature ? ' feature' : '');
+  card.style.setProperty('--r', rotations[i % rotations.length] + 'deg');
+  card.dataset.cat = p.cat;
+  card.dataset.id = p.id;
+  card.tabIndex = 0;
+  card.setAttribute('role','button');
+  card.setAttribute('aria-label', `Open ${p.title}`);
+
+  const multi = p.slides.length > 1;
+  const fitClass = p.fit === 'contain' ? ' contain' : '';
+
+  card.innerHTML = `
+    <span class="pin"></span>
+    ${multi ? `<span class="stackbadge">${p.slides.length} slides</span>` : ''}
+    <div class="frame${fitClass}"><img src="${p.slides[0].src}" alt="${p.title}" loading="lazy"></div>
+    <div class="cap">
+      <div>
+        <div class="t">${p.title}</div>
+        <div class="tags">${p.tags}</div>
+      </div>
+      <div class="n">${String(i+1).padStart(2,'0')}</div>
+    </div>
+  `;
+  card.addEventListener('click', ()=> openLightbox(p.id, 0));
+  card.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(p.id, 0); } });
+  grid.appendChild(card);
+});
+
+document.getElementById('countTag').textContent =
+  projects.length + " projects · " + projects.reduce((s,p)=>s+p.slides.length,0) + " pieces total";
+
+// ---------- LIGHTBOX ----------
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbTitle = document.getElementById('lbTitle');
+const lbMeta = document.getElementById('lbMeta');
+const lbCaption = document.getElementById('lbCaption');
+const lbCounter = document.getElementById('lbCounter');
+const lbDots = document.getElementById('lbDots');
+
+let currentProject = null;
+let currentSlide = 0;
+
+function openLightbox(id, slideIndex){
+  currentProject = projects.find(p=>p.id===id);
+  currentSlide = slideIndex || 0;
+  renderSlide();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function renderSlide(){
+  const p = currentProject;
+  const s = p.slides[currentSlide];
+  lbImg.src = s.src;
+  lbImg.alt = p.title;
+  lbTitle.textContent = p.title;
+  lbMeta.textContent = p.tags;
+  lbCaption.textContent = s.caption;
+  lbCounter.textContent = p.slides.length > 1 ? (currentSlide+1) + " / " + p.slides.length : "";
+  document.getElementById('lbPrev').style.display = p.slides.length > 1 ? 'flex' : 'none';
+  document.getElementById('lbNext').style.display = p.slides.length > 1 ? 'flex' : 'none';
+
+  lbDots.innerHTML = '';
+  if(p.slides.length > 1){
+    p.slides.forEach((_, i)=>{
+      const d = document.createElement('button');
+      d.className = 'lb-dot' + (i===currentSlide ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      d.addEventListener('click', ()=>{ currentSlide = i; renderSlide(); });
+      lbDots.appendChild(d);
     });
-  })();
+  }
+}
+function nextSlide(){ if(!currentProject) return; currentSlide = (currentSlide+1) % currentProject.slides.length; renderSlide(); }
+function prevSlide(){ if(!currentProject) return; currentSlide = (currentSlide-1+currentProject.slides.length) % currentProject.slides.length; renderSlide(); }
+
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbNext').addEventListener('click', nextSlide);
+document.getElementById('lbPrev').addEventListener('click', prevSlide);
+lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+
+document.addEventListener('keydown', (e)=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowRight') nextSlide();
+  if(e.key === 'ArrowLeft') prevSlide();
+});
+
+// touch swipe support
+let touchStartX = null;
+const stage = document.querySelector('.lb-stage');
+stage.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
+stage.addEventListener('touchend', (e)=>{
+  if(touchStartX === null) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx) > 40){ dx > 0 ? prevSlide() : nextSlide(); }
+  touchStartX = null;
+}, {passive:true});
+const form = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+form.addEventListener('submit', (event)=>{
+  event.preventDefault();
+  const data = new FormData(form);
+  const subject = `${data.get('project_type')} enquiry from ${data.get('name')}`;
+  const body = [`Name: ${data.get('name')}`, `Email: ${data.get('email')}`, `Project type: ${data.get('project_type')}`, `Timeline: ${data.get('timeline') || 'Not specified'}`, '', data.get('message')].join('\\n');
+  formStatus.textContent = 'Opening your email app…';
+  window.location.href = `mailto:shubhamshukla8926@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
 </script>
+
 </body>
 </html>
