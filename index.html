@@ -456,6 +456,7 @@
       <div class="id-row"><span class="k">Tools</span><span class="v">Adobe Photoshop</span></div>
       <div class="id-row"><span class="k">Best trait</span><span class="v">Won't stop trying new things</span></div>
       <div class="id-row"><span class="k">Email</span><span class="v">shubhamshukla8926@gmail.com</span></div>
+      <div class="id-row"><span class="k">WhatsApp</span><span class="v">+91 8080053348</span></div>
       <div class="id-row"><span class="k">Instagram</span><span class="v">@iikidnapkiddss</span></div>
     </div>
     <div class="about-copy">
@@ -493,6 +494,7 @@
   </form>
   <div class="contact-links">
     <a class="btn primary" href="mailto:shubhamshukla8926@gmail.com">Email Me</a>
+    <a class="btn whatsapp" href="https://wa.me/918080053348" target="_blank" rel="noopener">WhatsApp Me</a>
     <a class="btn" href="https://instagram.com/iikidnapkiddss" target="_blank" rel="noopener">@iikidnapkiddss</a>
     <a class="btn" href="#work">See The Work</a>
   </div>
@@ -767,7 +769,7 @@ document.getElementById('whatsapp-submit').addEventListener('click', ()=>{
   if(!form.reportValidity()) return;
   const {subject, body} = buildOrderMessage();
   formStatus.textContent = 'Opening WhatsApp…';
-  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(`${subject}\\n\\n${body}`)}`, '_blank', 'noopener');
+  window.open(`https://wa.me/918080053348?text=${encodeURIComponent(`${subject}\\n\\n${body}`)}`, '_blank', 'noopener');
 });
 </script>
 
