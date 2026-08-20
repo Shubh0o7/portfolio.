@@ -263,6 +263,21 @@
     font-size:clamp(40px, 9vw, 104px); line-height:0.88; margin:0 0 30px;
   }
   .contact-links{ display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:10px; }
+  .proof{border-top:2px solid var(--ink); padding:86px 0 74px; background:rgba(255,255,255,.12);}
+  .proof-head{display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:30px;}
+  .proof-head h2{margin:0; font-size:clamp(42px,6vw,76px); line-height:.86; letter-spacing:-3px;}
+  .proof-note{max-width:390px; font-size:12px; line-height:1.7; margin:0;}
+  .proof-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .proof-card{border:1.5px solid var(--ink); background:var(--paper); padding:22px; min-height:220px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:5px 5px 0 rgba(24,24,22,.12);}
+  .proof-card:nth-child(2){transform:translateY(14px) rotate(-1deg);}
+  .proof-card:nth-child(3){transform:rotate(1deg);}
+  .proof-mark{font-family:'Bebas Neue',sans-serif; font-size:42px; line-height:1; color:var(--crimson);}
+  .proof-card h3{font-size:20px; margin:18px 0 8px; letter-spacing:-.5px;}
+  .proof-card p{font-size:12px; line-height:1.65; margin:0;}
+  .proof-meta{font-size:10px; letter-spacing:1.3px; text-transform:uppercase; font-weight:700; margin-top:20px; opacity:.62;}
+  .proof-cta{display:flex; justify-content:space-between; align-items:center; gap:20px; margin-top:42px; padding-top:20px; border-top:1.5px dashed var(--ink);}
+  .proof-cta p{font-size:13px; margin:0; max-width:510px; line-height:1.6;}
+  @media (max-width:760px){ .proof{padding:58px 0;} .proof-head{display:block;} .proof-note{margin-top:18px;} .proof-grid{grid-template-columns:1fr;} .proof-card:nth-child(2),.proof-card:nth-child(3){transform:none;} .proof-cta{display:block;} .proof-cta .btn{margin-top:18px; width:100%; text-align:center;} }
   .contact-form{max-width:760px; margin:34px auto 0; text-align:left; border:2px solid var(--ink); padding:24px; background:rgba(242,238,226,.7);}
   .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
   .field{display:flex; flex-direction:column; gap:7px;}
@@ -499,6 +514,30 @@
     <a class="btn whatsapp" href="https://wa.me/918080053348" target="_blank" rel="noopener">WhatsApp Me</a>
     <a class="btn" href="https://instagram.com/iikidnapkiddss" target="_blank" rel="noopener">@iikidnapkiddss</a>
     <a class="btn" href="#work">See The Work</a>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="proof-head">
+      <div><span class="eyebrow">Featured collaborations</span><h2>Proof over<br>promises.</h2></div>
+      <p class="proof-note">A transparent look at the kind of visual problems I enjoy solving. These are selected portfolio projects—not invented client testimonials.</p>
+    </div>
+    <div class="proof-grid">
+      <article class="proof-card">
+        <div><div class="proof-mark">01</div><h3>Campaign thinking</h3><p>Sociocool is a 19-piece social campaign built as a connected story—from teaser posts and countdowns to the full brand reveal and event promotion.</p></div>
+        <div class="proof-meta">Social campaign · 19 pieces</div>
+      </article>
+      <article class="proof-card">
+        <div><div class="proof-mark">02</div><h3>Identity systems</h3><p>The SL Monogram explores two related logo directions, showing how one idea can flex between a detailed crest and a simpler badge.</p></div>
+        <div class="proof-meta">Monogram identity · 2 directions</div>
+      </article>
+      <article class="proof-card">
+        <div><div class="proof-mark">03</div><h3>Range that ships</h3><p>From film and event posters to product visuals, logos, and business cards, the collection shows range across formats and moods.</p></div>
+        <div class="proof-meta">12 projects · 31 pieces</div>
+      </article>
+    </div>
+    <div class="proof-cta"><p>Have a brief that needs a visual direction? Send the details and I’ll reply with the next practical step.</p><a class="btn primary" href="#contact">Start your order</a></div>
   </div>
 </section>
 </main>
