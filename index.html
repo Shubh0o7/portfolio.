@@ -275,6 +275,7 @@
   .order-actions{display:flex; gap:10px; flex-wrap:wrap;}
   .form-help{font-size:11px; line-height:1.6; opacity:.65; margin:0; max-width:390px;}
   .form-status{font-size:12px; color:var(--crimson); font-weight:700; margin:14px 0 0; min-height:18px;}
+  .honeypot{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   .btn{
     display:inline-block; padding:15px 28px; border:2px solid var(--ink);
     font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700;
@@ -489,7 +490,8 @@
       <div class="field"><label for="contact-quantity">Quantity or scope</label><input id="contact-quantity" name="quantity" type="text" placeholder="e.g. 3 posters or 1 logo"></div>
       <div class="field full"><label for="contact-message">Order details</label><textarea id="contact-message" name="message" placeholder="What are you making, who is it for, and what should the design achieve?" required></textarea></div>
     </div>
-    <div class="form-actions"><p class="form-help">Choose Email to send the order request directly, or WhatsApp to open a ready-to-send message. No account or server is required.</p><div class="order-actions"><button class="btn primary" type="submit">Order by email</button><button class="btn whatsapp" id="whatsapp-submit" type="button">Order on WhatsApp</button></div></div>
+    <div class="honeypot" aria-hidden="true"><label for="contact-website">Website</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <div class="form-actions"><p class="form-help">Submit the order to save it securely and notify me by email, or use WhatsApp for a direct conversation.</p><div class="order-actions"><button class="btn primary" type="submit">Submit order</button><button class="btn whatsapp" id="whatsapp-submit" type="button">Order on WhatsApp</button></div></div>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
   </form>
   <div class="contact-links">
@@ -752,18 +754,48 @@ stage.addEventListener('touchend', (e)=>{
 }, {passive:true});
 const form = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
-function buildOrderMessage(){
+const submitButton = form.querySelector('button[type="submit"]');
+const SUPABASE_ORDER_ENDPOINT = 'https://bgsujkimycvsvclkjsiw.supabase.co/functions/v1/submit-order';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnc3Vqa2lteWN2c3ZjbGtqc2l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0Mzk3MzIsImV4cCI6MjA3MzAxNTczMn0.SzKaOZGrVOSxmuEi4eOvCjNRON6ACD8M_LCjoa00yVk';
+function getOrderPayload(){
   const data = new FormData(form);
-  const subject = `Design order request — ${data.get('project_type')} — ${data.get('name')}`;
-  const body = [`DESIGN ORDER REQUEST`, ``, `Name: ${data.get('name')}`, `Email: ${data.get('email')}`, `Service: ${data.get('project_type')}`, `Budget: ${data.get('budget')}`, `Deadline: ${data.get('timeline') || 'Not specified'}`, `Quantity / scope: ${data.get('quantity') || 'Not specified'}`, ``, `Order details:`, data.get('message')].join('\\n');
+  return {
+    name: data.get('name')?.toString().trim() || '',
+    email: data.get('email')?.toString().trim() || '',
+    service: data.get('project_type')?.toString().trim() || '',
+    budget: data.get('budget')?.toString().trim() || '',
+    deadline: data.get('timeline')?.toString().trim() || '',
+    quantity: data.get('quantity')?.toString().trim() || '',
+    details: data.get('message')?.toString().trim() || '',
+    website: data.get('website')?.toString().trim() || ''
+  };
+}
+function buildOrderMessage(){
+  const order = getOrderPayload();
+  const subject = `Design order request — ${order.service} — ${order.name}`;
+  const body = [`DESIGN ORDER REQUEST`, ``, `Name: ${order.name}`, `Email: ${order.email}`, `Service: ${order.service}`, `Budget: ${order.budget}`, `Deadline: ${order.deadline || 'Not specified'}`, `Quantity / scope: ${order.quantity || 'Not specified'}`, ``, `Order details:`, order.details].join('\\n');
   return {subject, body};
 }
-form.addEventListener('submit', (event)=>{
+form.addEventListener('submit', async (event)=>{
   event.preventDefault();
   if(!form.reportValidity()) return;
-  const {subject, body} = buildOrderMessage();
-  formStatus.textContent = 'Opening your email app…';
-  window.location.href = `mailto:shubhamshukla8926@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  submitButton.disabled = true;
+  formStatus.textContent = 'Saving your order…';
+  try{
+    const response = await fetch(SUPABASE_ORDER_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`},
+      body: JSON.stringify(getOrderPayload())
+    });
+    const result = await response.json().catch(()=>({}));
+    if(!response.ok || !result.accepted) throw new Error(result.error || 'Unable to save the order.');
+    form.reset();
+    formStatus.textContent = result.notification_status === 'sent' ? 'Order received — email notification sent.' : 'Order received — saved securely; email notification is pending.';
+  }catch(error){
+    formStatus.textContent = error.message || 'Something went wrong. Please try WhatsApp or email instead.';
+  }finally{
+    submitButton.disabled = false;
+  }
 });
 document.getElementById('whatsapp-submit').addEventListener('click', ()=>{
   if(!form.reportValidity()) return;
